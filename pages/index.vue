@@ -1,12 +1,10 @@
 <template>
   <section class="container">
     <div>
-      <h1 class="title">
-        ironemes
-      </h1>
-      <p>
-        {{ breeds }}
-      </p>
+      <div v-for="ironeme in ironemes" :key="ironeme.id">
+          <p>{{ ironeme.text }}</p>
+          <p>{{ ironeme.user.name }}</p>
+      </div>
     </div>
   </section>
 </template>
@@ -21,7 +19,7 @@ export default {
   },
   async asyncData () {
     const { data } = await axios.get('https://test-d9ac9.firebaseio.com/.json')
-    return { breeds: data }
+    return { ironemes: data }
   }
 }
 </script>
@@ -35,24 +33,5 @@ export default {
   text-align: center;
 }
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
