@@ -1,6 +1,6 @@
 <template>
-  <section class="container ironemes-view">
-    <div>
+  <section class="container">
+    <div class="ironemes-view">
       <div v-for="ironeme in ironemes" :key="ironeme.id">
           <p>{{ ironeme.text }}</p>
           <p>{{ ironeme.user.name }}</p>

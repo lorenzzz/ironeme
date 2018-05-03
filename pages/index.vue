@@ -1,8 +1,8 @@
 <template>
-  <section class="container ironemes-view">
-    <div>
+  <section class="container">
+    <div class="ironemes-view">
       <div v-for="ironeme in ironemes" :key="ironeme.id">
-          <p>{{ ironeme.text }}</p>
+          <h1>{{ ironeme.text }}</h1>
           <p>{{ ironeme.user.name }}</p>
       </div>
     </div>
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,7 +39,39 @@ export default {
 }
 
 .ironemes-view {
+  display: flex;
   flex-direction: column-reverse;
+  h1 {
+    font-family: Elephant;
+    text-transform: uppercase;
+  }
+  p{
+    font-family: Graebenbach;
+  }
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column ;
+  }
+  div{
+    padding: 0 10%;
+    width: 100vw;
+    height: 50vh;
+    
+  }
+  /*  div:nth-child(3n +2){
+    width: 50vw;
+    height: 100vh;
+    align-self: flex-start;
+    padding: 0 10%;
+  }
+   div:nth-child(3n +3){
+    width: 50vw;
+    height: 100vh;
+    align-self: flex-end;
+    padding: 0 10%;
+  }*/
 }
 
 </style>

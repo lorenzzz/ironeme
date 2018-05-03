@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-      message: 'hello'
+      message: 'ironème'
       }
     }
 }
@@ -38,6 +38,7 @@ export default {
 #print-area > h1 {
   font-family: Elephant;
   font-size: 20vh;
+  text-transform: uppercase;
 }
 
 </style>
