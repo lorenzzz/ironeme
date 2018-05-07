@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div class="ironemes-view">
-      <div v-for="ironeme in ironemes" :key="ironeme.id">
+      <div v-for="(ironeme, index) in ironemes" :key="index">
           <h1>{{ ironeme.text }}</h1>
           <p>{{ ironeme.user.name }}</p>
       </div>
@@ -18,8 +18,16 @@ export default {
     AppLogo
   },
   async asyncData () {
-    const { data } = await axios.get('https://test-d9ac9.firebaseio.com/.json')
+    const { data } = await axios.get('https://test-d9ac9.firebaseio.com/.json?orderBy=%22$key%22&limitToLast=6')
     return { ironemes: data }
+  },
+  methods: {
+    test : function () {
+      console.log(this.ironemes);
+    }
+  },
+  beforeMount() {
+    this.test()
   }
 }
 </script>
@@ -40,7 +48,10 @@ export default {
 
 .ironemes-view {
   display: flex;
-  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: center;
+  align-items: center;
   h1 {
     font-family: Elephant;
     text-transform: uppercase;
@@ -54,24 +65,24 @@ export default {
     justify-content: center;
     flex-direction: column ;
   }
-  div{
+  div:nth-child(3n +1){
     padding: 0 10%;
     width: 100vw;
     height: 50vh;
     
   }
-  /*  div:nth-child(3n +2){
-    width: 50vw;
-    height: 100vh;
+    div:nth-child(3n +2){
+    width: calc(100% * (1/2) - 10px - 1px);
+    height: 50vh;
     align-self: flex-start;
     padding: 0 10%;
-  }
+    }
    div:nth-child(3n +3){
     width: 50vw;
-    height: 100vh;
+    height: 50vh;
     align-self: flex-end;
     padding: 0 10%;
-  }*/
+  }
 }
 
 </style>
